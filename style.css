@@ -1,49 +1,130 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f2f4f8;
+/* RESET BÁSICO */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+body {
+    background: linear-gradient(to right, #e0f2fe, #f0fdfa);
+    color: #333;
+    min-height: 100vh;
+}
+
+/* HEADER */
 header {
-    background: #2563eb;
+    background: #0284c7;
     color: white;
-    padding: 25px;
     text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* MAIN */
 main {
-    max-width: 600px;
-    margin: 30px auto;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: grid;
+    gap: 30px;
 }
 
+/* CARD */
 .card {
     background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-input, button {
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.12);
+}
+
+.card h2 {
+    color: #0369a1;
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+input {
     width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+input:focus {
+    outline: none;
+    border-color: #0284c7;
+    box-shadow: 0 0 5px rgba(2,132,199,0.3);
+}
+
+/* BOTÃO */
 button {
-    background: #2563eb;
+    width: 100%;
+    padding: 14px;
+    background: #0284c7;
     color: white;
+    font-size: 1.1rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
 }
 
+button:hover {
+    background: #0369a1;
+    transform: translateY(-2px);
+}
+
+/* RESULTADO */
 .resultado {
-    margin-top: 15px;
-    background: #f1f5f9;
-    padding: 10px;
-    border-radius: 8px;
+    margin-top: 20px;
+    background: #e0f2fe;
+    padding: 15px;
+    border-left: 5px solid #0284c7;
+    border-radius: 10px;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
+/* FOOTER */
 footer {
     text-align: center;
-    margin-top: 20px;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* RESPONSIVO */
+@media (min-width: 768px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    button {
+        font-size: 1rem;
+    }
 }
