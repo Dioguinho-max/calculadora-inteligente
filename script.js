@@ -1,45 +1,42 @@
-function calcularMedia() {
-    // Pega os valores dos inputs
-    let n1 = document.getElementById("nota1").value;
-    let n2 = document.getElementById("nota2").value;
-    let n3 = document.getElementById("nota3").value;
+const notasContainer = document.getElementById("notas-container");
+const adicionarNotaBtn = document.getElementById("adicionar-nota");
+const calcularMediaBtn = document.getElementById("calcular-media");
+const resultadoDiv = document.getElementById("resultadoMedia");
 
-    // Verifica se todos os campos estão vazios
-    if (!n1 && !n2 && !n3) {
-        document.getElementById("resultadoMedia").innerHTML =
-            "❌ Por favor, digite pelo menos uma nota.";
+// Adicionar nova avaliação
+adicionarNotaBtn.addEventListener("click", () => {
+    const input = document.createElement("input");
+    input.type = "number";
+    input.step = "0.1";
+    input.placeholder = "Digite a nota";
+    input.classList.add("nota");
+    notasContainer.appendChild(input);
+});
+
+// Calcular média
+calcularMediaBtn.addEventListener("click", () => {
+    const inputs = document.querySelectorAll("input.nota");
+    let soma = 0;
+    let totalNotas = 0;
+
+    inputs.forEach(input => {
+        const valor = parseFloat(input.value.replace(",", "."));
+        if (!isNaN(valor)) {
+            soma += valor;
+            totalNotas++;
+        }
+    });
+
+    if (totalNotas === 0) {
+        resultadoDiv.innerHTML = "❌ Digite pelo menos uma nota.";
         return;
     }
 
-    // Converte para número, ignora campos vazios
-    n1 = n1 ? Number(n1) : 0;
-    n2 = n2 ? Number(n2) : 0;
-    n3 = n3 ? Number(n3) : 0;
+    const media = Math.round((soma / totalNotas) * 10) / 10;
+    const situacao = media >= 6 ? "✅ Aprovado" : "❌ Reprovado";
 
-    // Conta quantas notas foram digitadas
-    let quantidadeNotas = 0;
-    if (n1) quantidadeNotas++;
-    if (n2) quantidadeNotas++;
-    if (n3) quantidadeNotas++;
-
-    // Evita divisão por zero
-    if (quantidadeNotas === 0) quantidadeNotas = 1;
-
-    // Calcula a soma e a média
-    let soma = n1 + n2 + n3;
-    let media = soma / quantidadeNotas;
-
-    // Arredonda para 1 casa decimal
-    let mediaArredondada = Math.round(media * 10) / 10;
-
-    // Situação do aluno
-    let situacao = mediaArredondada >= 6 ? "✅ Aprovado" : "❌ Reprovado";
-
-    // Mostra passo a passo
-    document.getElementById("resultadoMedia").innerHTML = `
-        <p><strong>Passo a passo:</strong></p>
-        <p>1️⃣ Somamos as notas digitadas: ${n1} + ${n2} + ${n3} = ${soma}</p>
-        <p>2️⃣ Dividimos pela quantidade de notas preenchidas (${quantidadeNotas}): ${soma} ÷ ${quantidadeNotas} = <strong>${mediaArredondada}</strong></p>
-        <p><strong>Resultado:</strong> ${situacao}</p>
+    resultadoDiv.innerHTML = `
+        <p><strong>Média final:</strong> ${media}</p>
+        <p><strong>Situação:</strong> ${situacao}</p>
     `;
-}
+});
