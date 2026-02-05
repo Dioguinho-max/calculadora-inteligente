@@ -7,18 +7,18 @@
 }
 
 body {
-    background: linear-gradient(to right, #e0f2fe, #f0fdfa);
-    color: #333;
+    background: #121212;
+    color: #e0e0e0;
     min-height: 100vh;
 }
 
 /* HEADER */
 header {
-    background: #0284c7;
-    color: white;
+    background: #1f1f1f;
+    color: #fff;
     text-align: center;
     padding: 40px 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
 header h1 {
@@ -28,34 +28,32 @@ header h1 {
 
 header p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
 /* MAIN */
 main {
-    max-width: 900px;
+    max-width: 700px;
     margin: 40px auto;
     padding: 0 20px;
-    display: grid;
-    gap: 30px;
 }
 
 /* CARD */
 .card {
-    background: white;
+    background: #1e1e1e;
     padding: 25px;
     border-radius: 16px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.12);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.7);
 }
 
 .card h2 {
-    color: #0369a1;
+    color: #03a9f4;
     margin-bottom: 20px;
 }
 
@@ -64,45 +62,49 @@ input {
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #555;
     border-radius: 10px;
     font-size: 1rem;
+    background: #2b2b2b;
+    color: #fff;
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input:focus {
     outline: none;
-    border-color: #0284c7;
-    box-shadow: 0 0 5px rgba(2,132,199,0.3);
+    border-color: #03a9f4;
+    box-shadow: 0 0 5px rgba(3,169,244,0.5);
 }
 
 /* BOTÃO */
 button {
     width: 100%;
     padding: 14px;
-    background: #0284c7;
-    color: white;
+    background: #03a9f4;
+    color: #121212;
     font-size: 1.1rem;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
+    font-weight: bold;
 }
 
 button:hover {
-    background: #0369a1;
+    background: #0288d1;
     transform: translateY(-2px);
 }
 
 /* RESULTADO */
 .resultado {
     margin-top: 20px;
-    background: #e0f2fe;
+    background: #2b2b2b;
     padding: 15px;
-    border-left: 5px solid #0284c7;
+    border-left: 5px solid #03a9f4;
     border-radius: 10px;
     font-size: 1rem;
     line-height: 1.5;
+    color: #fff;
 }
 
 /* FOOTER */
@@ -110,16 +112,10 @@ footer {
     text-align: center;
     padding: 20px;
     font-size: 0.9rem;
-    color: #555;
+    color: #888;
 }
 
 /* RESPONSIVO */
-@media (min-width: 768px) {
-    main {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
 @media (max-width: 480px) {
     header h1 {
         font-size: 2rem;
