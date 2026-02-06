@@ -17,26 +17,32 @@ adicionarNotaBtn.addEventListener("click", () => {
 calcularMediaBtn.addEventListener("click", () => {
     const inputs = document.querySelectorAll("input.nota");
     let soma = 0;
-    let totalNotas = 0;
+    let notasUsadas = [];
 
+    // Somar todas as notas válidas
     inputs.forEach(input => {
-        const valor = parseFloat(input.value.replace(",", "."));
+        let valor = parseFloat(input.value.replace(",", "."));
         if (!isNaN(valor)) {
             soma += valor;
-            totalNotas++;
+            notasUsadas.push(valor);
         }
     });
 
-    if (totalNotas === 0) {
+    if (notasUsadas.length === 0) {
         resultadoDiv.innerHTML = "❌ Digite pelo menos uma nota.";
         return;
     }
 
-    const media = Math.round((soma / totalNotas) * 10) / 10;
+    // Média arredondada 1 casa decimal
+    const media = Math.round((soma / notasUsadas.length) * 10) / 10;
     const situacao = media >= 6 ? "✅ Aprovado" : "❌ Reprovado";
 
+    // Passo a passo
     resultadoDiv.innerHTML = `
-        <p><strong>Média final:</strong> ${media}</p>
-        <p><strong>Situação:</strong> ${situacao}</p>
+        <p><strong>Passo a passo:</strong></p>
+        <p>1️⃣ Notas consideradas: ${notasUsadas.join(", ")}</p>
+        <p>2️⃣ Somamos as notas: ${notasUsadas.join(" + ")} = ${soma.toFixed(1)}</p>
+        <p>3️⃣ Dividimos pela quantidade de notas (${notasUsadas.length}): ${soma.toFixed(1)} ÷ ${notasUsadas.length} = <strong>${media}</strong></p>
+        <p><strong>Resultado:</strong> ${situacao}</p>
     `;
 });
